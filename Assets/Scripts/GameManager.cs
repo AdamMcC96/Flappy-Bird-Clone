@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject gameOverCanvas;
+    public GameObject gameOverPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     public void GameOver()
     {
-        gameOverCanvas.SetActive(true);
+        gameOverPanel.SetActive(true);
         Time.timeScale = 0;
     }
 

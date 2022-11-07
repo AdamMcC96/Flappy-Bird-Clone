@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour
     public GameManager gameManager;
     public float velocity = 1;
     private Rigidbody2D rb;
+    ScoreCounter sc;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sc = FindObjectOfType<ScoreCounter>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -22,10 +25,20 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.up * velocity;
         }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameManager.GameOver();
+        
+            gameManager.GameOver();
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ScoreCounter"))
+        {
+            sc.Scored();
+        }
+       
 
     }
 }
